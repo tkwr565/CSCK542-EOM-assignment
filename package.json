@@ -1,0 +1,24 @@
+{
+  "name": "csck542-eom-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkwr565/CSCK542-EOM-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkwr565/CSCK542-EOM-assignment/issues"
+  },
+  "homepage": "https://github.com/tkwr565/CSCK542-EOM-assignment#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5"
+  }
+}

@@ -9,8 +9,11 @@ const queries = {
         JOIN users u ON e.UserID = u.UserID
         WHERE c.TeacherID = ?
         `,
-    // Functional Requirement 5: Teachers can Fail or Pass a Student
-    gradeStudent: 'UPDATE enrolments SET Mark = ? WHERE CourseID = ? AND UserID = ?',
+    // Functional Requirement 5: Teachers can Pass a Student
+    passStudent: 'UPDATE enrolments SET Mark = 1 WHERE CourseID = ? AND UserID = ?',
+
+    // Functional Requirement 5: Teachers can Fail a Student
+    failStudent: 'UPDATE enrolments SET Mark = 0 WHERE CourseID = ? AND UserID = ?',
 };
 
 module.exports = queries;

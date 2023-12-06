@@ -1,5 +1,5 @@
-import { promisePool } from './database.js';
-import teacherQueries from '../models/queries/teacherQueries.js';
+import connection from './database.js';
+import teacherQueries from './queries/teacherQueries.js';
 
 
 // ----- TEACHER -----
@@ -8,7 +8,7 @@ import teacherQueries from '../models/queries/teacherQueries.js';
 
 async function viewInChargeCourses(teacherID) {
     try {
-        const [result] = await promisePool.query(teacherQueries.viewInChargeCourses, [teacherID]);
+        const [result] = await connection.query(teacherQueries.viewInChargeCourses, [teacherID]);
         return result;
     } catch (error) {
         console.error('Error viewing in-charge courses:', error);
@@ -19,7 +19,7 @@ async function viewInChargeCourses(teacherID) {
 // Functional Requirement 5: Teachers can Pass a Student
 async function passStudent(courseID, userID) {
     try {
-        const [result] = await promisePool.query(teacherQueries.passStudent, [courseID, userID]);
+        const [result] = await connection.query(teacherQueries.passStudent, [courseID, userID]);
         return result;
     } catch (error) {
         console.error('Error passing a student:', error);
@@ -30,7 +30,7 @@ async function passStudent(courseID, userID) {
 // Functional Requirement 5: Teachers can Fail a Student
 async function failStudent(courseID, userID) {
     try {
-        const [result] = await promisePool.query(teacherQueries.failStudent, [courseID, userID]);
+        const [result] = await connection.query(teacherQueries.failStudent, [courseID, userID]);
         return result;
     } catch (error) {
         console.error('Error failing a student:', error);

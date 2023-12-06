@@ -172,6 +172,11 @@ app.post('/teacher/failStudent/:courseID/:userID', async (req, res) => {
 
 // Listen to PORT 
 
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+})
+
 app.listen(PORT, (error) => {
     if (!error)
         console.log(`Server is successfully running, app is listening on http://localhost:${PORT}`)

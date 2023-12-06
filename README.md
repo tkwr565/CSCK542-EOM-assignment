@@ -51,4 +51,3 @@ The project is structured as follows:
 3. Setup environment variables 
     .env 
  
-

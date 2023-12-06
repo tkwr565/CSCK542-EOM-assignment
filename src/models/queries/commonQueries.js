@@ -1,6 +1,6 @@
 // commonQueries.js
 
-const queries = {
+const commonQueries = {
     // Functional Requirement 6: Access control for Admins, Teachers, and Students
     // Method 1: Check if a user is authorized for a specific action
     // return > 0 if Authorized/Matched for certain RoleID; 
@@ -10,4 +10,4 @@ const queries = {
     getUserRole: 'SELECT RoleID FROM users WHERE UserID = ?',
 };
 
-module.exports = queries;
+export default commonQueries;

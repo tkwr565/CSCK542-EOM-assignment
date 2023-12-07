@@ -1,5 +1,8 @@
-require('dotenv').config({path: '../../.env'});
-const mysql2 = require('mysql2')
+import dotenv from 'dotenv';
+dotenv.config();
+// require('dotenv').config({ path: '../../.env' });
+import mysql2 from 'mysql2';
+// const mysql2 = require('mysql2')
 
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
@@ -10,7 +13,7 @@ const dbConfig = {
 
 const connection = mysql2.createConnection(dbConfig)
 
-connection.connect(err=> {
+connection.connect(err => {
     if (err) {
         console.error('Error connecting: ' + err.stack);
         return;
@@ -18,4 +21,7 @@ connection.connect(err=> {
     console.log('Connected as ID ' + connection.threadId);
 });
 
-module.exports = connection;
+
+
+export default connection.promise();
+// module.exports = connection;

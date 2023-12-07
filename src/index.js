@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = process.env.PORT || 3000;
 
-const routes = require('./routes/index');
+import routes from './routes/index.js';
 
 
 app.use('/api', routes);

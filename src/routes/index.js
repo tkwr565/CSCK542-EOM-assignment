@@ -1,5 +1,5 @@
 import express from 'express';
-import adminRoutes from './adminRoutes.js';
+import adminRoutes from './adminRoute.js';
 
 
 const router = express.Router();

@@ -40,7 +40,7 @@ The project is structured as follows:
 
 ### Teacher Endpoints
 
-- View In-Charge Courses: `GET /teacher/viewInChargeCourses?userID={teacherUserID}`
+- View In-Charge Students: `GET /teacher/viewInChargeStudents?userID={teacherUserID}`
 - Pass Student: `POST /teacher/passStudent/:courseID/:studentID?userID={teacherUserID}`
 - Fail Student: `POST /teacher/failStudent/:courseID/:studentID?userID={teacherUserID}`
 

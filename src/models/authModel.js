@@ -1,5 +1,5 @@
-import connection from './database.js';
 import commonQueries from './queries/commonQueries.js';
+import connection from '../config/database.js';
 
 // ----- AUTH ----- 
 // Functional Requirement 6: Access control for Admins, Teachers, and Students

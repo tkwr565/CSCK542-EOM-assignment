@@ -1,38 +1,65 @@
 import * as teacher from '../models/teacherModel.js';
+import * as authCheck from './authController.js';
 
-async function viewInChargeCourses(req, res) {
-    const teacherID = req.params.teacherID;
+async function viewInChargeStudents(req, res) {
+    const userID = req.query.userID;
+    // Check if the user making the request is a teacher
     try {
-        const inChargeCourses = await teacher.viewInChargeCourses(teacherID);
+        // Will throw an error if Unauthorized
+        await authCheck.checkUserRoleAuthorization(userID, 2);
+        // Proceed with the teacher functionality
+        const inChargeCourses = await teacher.viewInChargeStudents(userID);
         res.json({ success: true, inChargeCourses });
     } catch (error) {
-        console.error('Error viewing in-charge courses:', error);
-        res.status(500).json({ success: false, error: 'Internal Server Error' });
+        if (error.message === 'Unauthorized') {
+            res.status(403).json({ success: false, error: 'Unauthorized' });
+        } else {
+            console.error('Error viewing in-charge courses:', error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
+        }
     }
 }
 
 async function passStudent(req, res) {
     const courseID = req.params.courseID;
-    const userID = req.params.userID;
+    const studentID = req.params.studentID;
+    const userID = req.query.userID;
+    // Check if the user making the request is a teacher
     try {
-        const result = await teacher.passStudent(courseID, userID);
+        // Will throw an error if Unauthorized
+        await authCheck.checkUserRoleAuthorization(userID, 2);
+        // Proceed with the teacher functionality
+        const result = await teacher.passStudent(courseID, studentID);
         res.json({ success: true, result });
     } catch (error) {
-        console.error('Error passing a student:', error);
-        res.status(500).json({ success: false, error: 'Internal Server Error' });
+        if (error.message === 'Unauthorized') {
+            res.status(403).json({ success: false, error: 'Unauthorized' });
+        } else {
+            console.error('Error passing a student:', error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
+        }
     }
 }
 
 async function failStudent(req, res) {
     const courseID = req.params.courseID;
-    const userID = req.params.userID;
+    const studentID = req.params.studentID;
+    const userID = req.query.userID;
+    // Check if the user making the request is a teacher
     try {
-        const result = await teacher.failStudent(courseID, userID);
+        // Will throw an error if Unauthorized
+        await authCheck.checkUserRoleAuthorization(userID, 2);
+        // Proceed with the teacher functionality
+        const result = await teacher.failStudent(courseID, studentID);
         res.json({ success: true, result });
     } catch (error) {
-        console.error('Error failing a student:', error);
-        res.status(500).json({ success: false, error: 'Internal Server Error' });
+        if (error.message === 'Unauthorized') {
+            res.status(403).json({ success: false, error: 'Unauthorized' });
+        } else {
+            console.error('Error failing a student:', error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
+        }
     }
 }
 
-export { viewInChargeCourses, passStudent, failStudent };
+export { viewInChargeStudents as viewInChargeCourses, passStudent, failStudent };

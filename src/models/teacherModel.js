@@ -1,4 +1,4 @@
-import connection from './database.js';
+import connection from '../config/database.js';
 import teacherQueries from './queries/teacherQueries.js';
 
 
@@ -6,9 +6,9 @@ import teacherQueries from './queries/teacherQueries.js';
 
 // Additional Functionality: View in-charge courses with corresponding students
 
-async function viewInChargeCourses(teacherID) {
+async function viewInChargeStudents(teacherID) {
     try {
-        const [result] = await connection.query(teacherQueries.viewInChargeCourses, [teacherID]);
+        const [result] = await connection.query(teacherQueries.viewInChargeStudents, [teacherID]);
         return result;
     } catch (error) {
         console.error('Error viewing in-charge courses:', error);
@@ -38,4 +38,4 @@ async function failStudent(courseID, userID) {
     }
 }
 
-export { viewInChargeCourses, passStudent, failStudent };
+export { viewInChargeStudents as viewInChargeStudents, passStudent, failStudent };

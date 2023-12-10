@@ -22,6 +22,12 @@ async function enrollInCourse(courseID, userID) {
         const [courseAvailability] = await connection.query(studentQueries.isCourseAvailable, [courseID]);
 
         if (courseAvailability[0]?.isAvailable === 1) {
+            // Check if the enrollment already exists
+            const [existingEnrolment] = await connection.query(studentQueries.isEnrolmentExist, [courseID, userID]);
+
+            if (existingEnrolment[0]?.count > 0) {
+                throw new Error('Enrolment already exists for the specified course and user.');
+            }
             // If the course is available, proceed with enrollment
             const [result] = await connection.query(studentQueries.enrollInCourse, [courseID, userID, courseID]);
             return result;

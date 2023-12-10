@@ -19,10 +19,15 @@ const studentQueries = {
     viewAppliedCourses: `
         SELECT c.CourseID, c.Title AS CourseTitle, u.Name AS TeacherName, e.Mark
         FROM courses c
-        JOIN enrolments e ON c.CourseID = e.CourseID
-        JOIN users u ON c.TeacherID = u.UserID
+        LEFT JOIN enrolments e ON c.CourseID = e.CourseID
+        LEFT JOIN users u ON c.TeacherID = u.UserID
         WHERE e.UserID = ?
     `,
+    isEnrolmentExist: `
+        SELECT COUNT(*) AS count
+        FROM enrolments
+        WHERE CourseID = ? AND UserID = ?
+    `
 };
 
 export default studentQueries;

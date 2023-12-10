@@ -2,7 +2,7 @@
 
 const teacherQueries = {
     // Additional Functionality: View in-charge courses with corresponding students
-    viewInChargeCourses: `
+    viewInChargeStudents: `
         SELECT c.CourseID, c.Title, u.UserID AS StudentID, u.Name AS StudentName, e.Mark AS StudentGrade
         FROM courses c
         LEFT JOIN enrolments e ON c.CourseID = e.CourseID

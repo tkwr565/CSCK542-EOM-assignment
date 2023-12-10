@@ -3,8 +3,8 @@ import * as teacherController from '../controllers/teacherController.js';
 
 const router = express.Router();
 
-router.get('/viewInChargeCourses/:teacherID', teacherController.viewInChargeCourses);
-router.post('/passStudent/:courseID/:userID', teacherController.passStudent);
-router.post('/failStudent/:courseID/:userID', teacherController.failStudent);
+router.get('/viewInChargeStudents', teacherController.viewInChargeCourses);
+router.post('/passStudent/:courseID/:studentID', teacherController.passStudent);
+router.post('/failStudent/:courseID/:studentID', teacherController.failStudent);
 
 export default router;
